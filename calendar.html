@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rally the Allies - Full Event Calendar</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://www.rallytheallies.com/calendar.html">
+    <meta property="og:title"       content="Rally The Allies — Get Involved In The Resistance">
+    <meta property="og:description" content="Browse our full calendar of activist events at RallyTheAllies.com">
+    <meta property="og:image"       content="https://www.rallytheallies.com/images/LAlogo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:url"         content="https://www.rallytheallies.com/calendar.html">
+    <meta name="twitter:title"       content="Rally The Allies — Get Involved In The Resistance">
+    <meta name="twitter:description" content="Browse our full calendar of activist events at RallyTheAllies.com">
+    <meta name="twitter:image"       content="https://www.rallytheallies.com/images/LAlogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Montserrat+Alternates:wght@300;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { overflow-x: hidden; }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #FFFFFF;
+            background-image: url('images/background-shapes.svg');
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            background-position: center -25vw;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: fixed;
+            top: 5%;
+            left: 0;
+            width: 100%;
+            background-color: #7BC4C4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: clamp(16px, 1.5vw, 24px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover { opacity: 0.8; }
+
+        .nav-links a .heavy { font-weight: 700; }
+        .nav-links a .light { font-weight: 300; }
+
+        .nav-icon {
+            display: inline-block;
+            vertical-align: middle;
+            stroke: white;
+            margin: 0 0.3rem;
+        }
+
+        .nav-star {
+            color: #FF6B4A;
+            font-size: 45px;
+            line-height: 1;
+            -webkit-text-stroke: 3px white;
+            text-stroke: 3px white;
+            flex-shrink: 0;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        @media (min-width: 768px) {
+            nav { padding: 1.2rem 3rem; height: 70px; }
+            .nav-star { font-size: 52px; }
+        }
+
+        @media (max-width: 767px) {
+            nav { padding: 0.8rem 1rem; height: 50px; }
+            .nav-links { gap: 1rem; }
+            .nav-star { font-size: 37px; -webkit-text-stroke: 2px white; }
+        }
+
+        /* ── Page body offset for fixed nav ── */
+        .page-wrap {
+            padding-top: 0;
+        }
+
+        /* ── EVENTS banner (teal, cutout text) ── */
+        .events-banner-wrapper {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 120px;
+            z-index: 999;
+            background: transparent;
+            margin-top: 120px;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 767px) {
+            .events-banner-wrapper {
+                top: calc(5% + 50px);
+                margin-top: calc(5% + 50px);
+            }
+        }
+
+        .events-banner {
+            width: 100%;
+            height: 60px;
+            display: block;
+        }
+
+        .events-banner-wide   { display: block; }
+        .events-banner-tablet { display: none; }
+        .events-banner-mobile { display: none; }
+
+        @media (max-width: 1024px) {
+            .events-banner-wide   { display: none; }
+            .events-banner-tablet { display: block; }
+            .events-banner-mobile { display: none; }
+        }
+        @media (max-width: 640px) {
+            .events-banner-wide   { display: none; }
+            .events-banner-tablet { display: none; }
+            .events-banner-mobile { display: block; }
+        }
+
+        /* ── Grid ── */
+        .cal-grid-section {
+            padding: 0 4% 5rem;
+        }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .cal-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 540px) {
+            .cal-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+
+        /* ── Event tile — same as carousel ── */
+        .event-box {
+            aspect-ratio: 1 / 1;
+            padding: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            container-type: inline-size;
+        }
+
+        .event-box-blue { background-color: rgba(171, 198, 202, 0.5); }
+        .event-box-red  { background-color: rgba(252, 238, 234, 0.5); }
+
+        .event-box-blue .event-title { background-color: #588e95; }
+        .event-box-red  .event-title { background-color: #e1502f; }
+        .event-box-blue .event-date  { background-color: #588e95; }
+        .event-box-red  .event-date  { background-color: #e1502f; }
+
+        .event-title {
+            font-family: 'DynaPuff', 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: 8cqi;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            container-type: inline-size;
+        }
+
+        .event-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 15cqi;
+        }
+
+        .event-location,
+        .event-time {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(12px, 6cqi, 28px);
+            font-weight: 700;
+            color: #333333;
+            padding: 0 3cqi;
+            margin: 1cqi 0;
+            text-align: center;
+        }
+
+        .event-location a {
+            color: #333333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .event-box-blue .event-location a:visited { color: #333333; }
+        .event-box-blue .event-location a:hover   { color: #e1502f; }
+        .event-box-blue .event-location a:visited:hover { color: #e1502f; }
+
+        .event-box-red .event-location a:visited { color: #333333; }
+        .event-box-red .event-location a:hover   { color: #588e95; }
+        .event-box-red .event-location a:visited:hover { color: #588e95; }
+
+        /* More Info button */
+        .event-more-info {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(11px, 4.5cqi, 20px);
+            font-weight: 700;
+            color: #333333;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            margin: 1cqi 0 0 0;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 100%;
+            transition: color 0.2s;
+        }
+
+        .event-box-blue .event-more-info { color: #333333; }
+        .event-box-blue .event-more-info:hover,
+        .event-box-blue .event-more-info.visited { color: #e1502f; }
+
+        .event-box-red .event-more-info { color: #333333; }
+        .event-box-red .event-more-info:hover,
+        .event-box-red .event-more-info.visited { color: #588e95; }
+
+        /* Date ribbon */
+        .event-date {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 15cqi;
+            padding: 0.5cqi 2cqi;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5cqi;
+        }
+
+        .event-date-label {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: 4.5cqi;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-align: left;
+        }
+
+        .event-date-value {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: 11cqi;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-align: right;
+        }
+
+        /* Loading / error states */
+        .events-loading {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(16px, 2vw, 24px);
+            color: #588e95;
+            padding: 3rem;
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        .events-error {
+            font-family: system-ui, sans-serif;
+            font-size: clamp(14px, 1.5vw, 18px);
+            color: #e1502f;
+            padding: 2rem;
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        /* ── Lightbox (identical to index.html) ── */
+        .event-lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-lightbox-overlay.active { display: flex; }
+
+        .event-lightbox-card {
+            position: relative;
+            width: clamp(320px, 80vw, 600px);
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .event-lightbox-card.lb-blue { background-color: rgba(171, 198, 202, 0.95); }
+        .event-lightbox-card.lb-red  { background-color: rgba(252, 238, 234, 0.95); }
+
+        .event-lightbox-title {
+            font-family: 'DynaPuff', 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(18px, 4vw, 32px);
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            padding: 0.75rem 3rem 0.75rem 1.2rem;
+            text-align: center;
+        }
+
+        .lb-blue .event-lightbox-title { background-color: #588e95; }
+        .lb-red  .event-lightbox-title { background-color: #e1502f; }
+
+        .event-lightbox-body {
+            padding: 1.2rem 1.5rem 70px 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .event-lightbox-body p {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(14px, 2.2vw, 20px);
+            font-weight: 700;
+            color: #333333;
+            text-align: center;
+            margin: 0.6rem 0;
+            line-height: 1.4;
+        }
+
+        .event-lightbox-body .lb-description {
+            font-size: 16px;
+            font-weight: 400;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin-top: 1rem;
+            line-height: 1.6;
+            text-align: center;
+            white-space: pre-wrap;
+        }
+
+        .lb-blue .event-lightbox-body .lb-description a,
+        .lb-blue .event-lightbox-body a {
+            color: #333333; text-decoration: none; transition: color 0.2s;
+        }
+        .lb-blue .event-lightbox-body a:visited,
+        .lb-blue .event-lightbox-body .lb-description a:visited { color: #333333; }
+        .lb-blue .event-lightbox-body a:hover,
+        .lb-blue .event-lightbox-body .lb-description a:hover { color: #e1502f; }
+        .lb-blue .event-lightbox-body a:visited:hover,
+        .lb-blue .event-lightbox-body .lb-description a:visited:hover { color: #e1502f; }
+
+        .lb-red .event-lightbox-body .lb-description a,
+        .lb-red .event-lightbox-body a {
+            color: #333333; text-decoration: none; transition: color 0.2s;
+        }
+        .lb-red .event-lightbox-body a:visited,
+        .lb-red .event-lightbox-body .lb-description a:visited { color: #333333; }
+        .lb-red .event-lightbox-body a:hover,
+        .lb-red .event-lightbox-body .lb-description a:hover { color: #588e95; }
+        .lb-red .event-lightbox-body a:visited:hover,
+        .lb-red .event-lightbox-body .lb-description a:visited:hover { color: #588e95; }
+
+        /* Mobile lightbox */
+        @media (max-width: 640px) {
+            .event-lightbox-card {
+                width: clamp(280px, 90vw, 400px);
+                max-height: 80vh;
+            }
+        }
+
+        /* Lightbox footer */
+        .event-lightbox-footer {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        .event-lightbox-share {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 0.6rem;
+            gap: 0.3rem;
+        }
+
+        .lb-blue .event-lightbox-share { background-color: rgba(88, 142, 149, 0.18); }
+        .lb-red  .event-lightbox-share { background-color: rgba(225, 80, 47, 0.12); }
+
+        .lb-share-btn {
+            background: none; border: none; cursor: pointer;
+            padding: 0.3rem; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.2s, transform 0.15s;
+            text-decoration: none; color: #333333;
+        }
+
+        .lb-share-btn:hover { opacity: 0.65; transform: scale(1.12); }
+        .lb-share-btn svg { display: block; }
+
+        .lb-share-label {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: 10px; font-weight: 700; color: #555;
+            text-align: center; margin-top: 1px; white-space: nowrap;
+        }
+
+        .lb-share-item {
+            display: flex; flex-direction: column;
+            align-items: center; gap: 1px;
+        }
+
+        .event-lightbox-date {
+            width: 50%; flex-shrink: 0;
+            padding: 0.4rem 1rem;
+            display: flex; flex-direction: row;
+            align-items: center; justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        .lb-blue .event-lightbox-date { background-color: #588e95; }
+        .lb-red  .event-lightbox-date { background-color: #e1502f; }
+
+        .event-lightbox-date-label {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(11px, 1.5vw, 16px);
+            font-weight: 700; color: #ffffff;
+            line-height: 1; text-align: left;
+        }
+
+        .event-lightbox-date-value {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(18px, 3vw, 30px);
+            font-weight: 700; color: #ffffff;
+            line-height: 1; text-align: right;
+        }
+
+        .event-lightbox-close {
+            position: absolute;
+            top: 0.5rem; right: 0.6rem;
+            background: none; border: none;
+            color: #ffffff; font-size: 1.8rem;
+            font-weight: 700; cursor: pointer;
+            line-height: 1; z-index: 10;
+            padding: 0 0.3rem;
+        }
+
+        .event-lightbox-close:hover { opacity: 0.75; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#content">
+                <span class="heavy">Content</span>
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="light">Spaces</span>
+            </a>
+            <a href="index.html" style="text-decoration:none;"><span class="nav-star">★</span></a>
+            <a href="shop.html">
+                <span class="heavy">Souvenir</span>
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="light">Shop</span>
+            </a>
+        </div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="page-wrap">
+
+        <!-- EVENTS banner -->
+        <div class="events-banner-wrapper">
+            <!-- Desktop -->
+            <svg class="events-banner events-banner-wide" viewBox="0 0 1400 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="evMaskWide">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="700" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">EVENTS</text>
+                        <text x="200" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="290" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="380" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="470" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="930" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1020" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1110" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1200" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#588e95" mask="url(#evMaskWide)"/>
+            </svg>
+            <!-- Tablet -->
+            <svg class="events-banner events-banner-tablet" viewBox="0 0 1100 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="evMaskTablet">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="550" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">EVENTS</text>
+                        <text x="150" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="220" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="290" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="360" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="740" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="810" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="880" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="950" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#588e95" mask="url(#evMaskTablet)"/>
+            </svg>
+            <!-- Mobile -->
+            <svg class="events-banner events-banner-mobile" viewBox="0 0 800 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="evMaskMobile">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="400" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">EVENTS</text>
+                        <text x="90"  y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="140" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="190" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="240" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="560" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="610" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="660" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="710" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#588e95" mask="url(#evMaskMobile)"/>
+            </svg>
+        </div>
+
+        <!-- Grid section -->
+        <section class="cal-grid-section">
+            <div class="cal-grid" id="cal-grid">
+                <div class="events-loading">Loading upcoming events...</div>
+            </div>
+        </section>
+
+    </div><!-- /page-wrap -->
+
+    <!-- Lightbox -->
+    <div class="event-lightbox-overlay" id="eventLightbox" role="dialog" aria-modal="true">
+        <div class="event-lightbox-card" id="lightboxCard">
+            <button class="event-lightbox-close" id="lightboxClose" aria-label="Close">&#x2715;</button>
+            <h3 class="event-lightbox-title" id="lightboxTitle"></h3>
+            <div class="event-lightbox-body" id="lightboxBody"></div>
+            <div class="event-lightbox-footer">
+                <div class="event-lightbox-share" id="lightboxShare">
+                    <div class="lb-share-item">
+                        <a href="calendar.html" class="lb-share-btn" title="View Full Calendar" aria-label="View Full Calendar">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </a>
+                        <span class="lb-share-label">Calendar</span>
+                    </div>
+                    <div class="lb-share-item">
+                        <button class="lb-share-btn" id="lbCopyLink" title="Copy event link" aria-label="Copy link">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        </button>
+                        <span class="lb-share-label" id="lbCopyLabel">Copy Link</span>
+                    </div>
+                    <div class="lb-share-item">
+                        <a class="lb-share-btn" id="lbFacebook" href="#" target="_blank" rel="noopener" title="Share on Facebook" aria-label="Share on Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <span class="lb-share-label">Facebook</span>
+                    </div>
+                    <div class="lb-share-item">
+                        <a class="lb-share-btn" id="lbTwitter" href="#" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <span class="lb-share-label">X</span>
+                    </div>
+                </div>
+                <div class="event-lightbox-date" id="lightboxDate">
+                    <span class="event-lightbox-date-label">Next<br>Date</span>
+                    <span class="event-lightbox-date-value" id="lightboxDateValue"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CALENDAR_ID = 'c_763fa72e771cd1ecd73b96041010c77d8152ec112b6a5eef7bc3eff9229d52d2@group.calendar.google.com';
+        const API_KEY     = 'AIzaSyDVqmPcGzgkqH4Tkccdvi7dU4Wyoz5GwC0';
+        const MAX_EVENTS  = 50;
+
+        // ── Helpers (identical to index.html) ──────────────────────────────
+        function formatDate(dateStr) {
+            const d = new Date(dateStr);
+            return `${d.getMonth() + 1}/${d.getDate()}`;
+        }
+
+        function formatTime(start, end) {
+            if (!start.dateTime) return 'All Day';
+            const fmt = t => {
+                const d = new Date(t);
+                let h = d.getHours(), m = d.getMinutes();
+                const ampm = h >= 12 ? 'PM' : 'AM';
+                h = h % 12 || 12;
+                return `${h}${m ? ':' + String(m).padStart(2,'0') : ''} ${ampm}`;
+            };
+            return `${fmt(start.dateTime)}${end?.dateTime ? ' – ' + fmt(end.dateTime) : ''}`;
+        }
+
+        // ── Build tile ─────────────────────────────────────────────────────
+        function buildEventBox(event, index) {
+            const colorClass = index % 2 === 0 ? 'event-box-blue' : 'event-box-red';
+            const title      = event.summary || 'Event';
+            const dateStr    = formatDate(event.start.dateTime || event.start.date);
+            const timeStr    = formatTime(event.start, event.end);
+            const location   = event.location || '';
+
+            const mapsUrl = location ? `https://maps.google.com/?q=${encodeURIComponent(location)}` : null;
+
+            let locLine1 = location, locLine2 = '';
+            if (location.includes(',')) {
+                const parts = location.split(',');
+                locLine1 = parts[0].trim();
+                locLine2 = parts.slice(1).join(',').trim();
+            }
+
+            const box = document.createElement('div');
+            box.className = `event-box ${colorClass}`;
+            box.innerHTML = `
+                <h3 class="event-title">${title}</h3>
+                <div class="event-body">
+                    ${location ? `<p class="event-location">${
+                        mapsUrl
+                            ? `<a href="${mapsUrl}" target="_blank">Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}</a>`
+                            : `Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}`
+                    }</p>` : ''}
+                    <p class="event-time">Time: ${timeStr}</p>
+                    <button class="event-more-info">More Info</button>
+                </div>
+                <div class="event-date">
+                    <span class="event-date-label">Next<br>Date</span>
+                    <span class="event-date-value">${dateStr}</span>
+                </div>
+            `;
+
+            const moreBtn = box.querySelector('.event-more-info');
+            const lbTheme = colorClass === 'event-box-blue' ? 'lb-blue' : 'lb-red';
+            moreBtn.addEventListener('click', () => {
+                moreBtn.classList.add('visited');
+                openLightbox({ title, location, locLine1, locLine2, mapsUrl, timeStr, dateStr, lbTheme, description: event.description || '', eventUrl: event.htmlLink || '' });
+            });
+
+            return box;
+        }
+
+        // ── Load events ────────────────────────────────────────────────────
+        async function loadEvents() {
+            const grid = document.getElementById('cal-grid');
+            const now  = new Date().toISOString();
+            const calId = encodeURIComponent(CALENDAR_ID);
+            const url  = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events`
+                       + `?key=${API_KEY}&timeMin=${now}&maxResults=${MAX_EVENTS}&singleEvents=true&orderBy=startTime`;
+            try {
+                const res  = await fetch(url);
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error?.message || 'Calendar API error');
+
+                const events = data.items || [];
+                grid.innerHTML = '';
+
+                if (events.length === 0) {
+                    grid.innerHTML = '<div class="events-loading">No upcoming events found.</div>';
+                    return;
+                }
+
+                events.forEach((event, i) => grid.appendChild(buildEventBox(event, i)));
+
+            } catch (err) {
+                console.error('Calendar fetch error:', err);
+                grid.innerHTML = '<div class="events-error">Could not load events. Please check back soon.</div>';
+            }
+        }
+
+        // ── Lightbox ───────────────────────────────────────────────────────
+        const lightboxOverlay = document.getElementById('eventLightbox');
+        const lightboxCard    = document.getElementById('lightboxCard');
+        const lightboxClose   = document.getElementById('lightboxClose');
+        const lightboxTitle   = document.getElementById('lightboxTitle');
+        const lightboxBody    = document.getElementById('lightboxBody');
+        const lightboxDateVal = document.getElementById('lightboxDateValue');
+        const lbFacebook      = document.getElementById('lbFacebook');
+        const lbTwitter       = document.getElementById('lbTwitter');
+        const lbCopyLink      = document.getElementById('lbCopyLink');
+        const lbCopyLabel     = document.getElementById('lbCopyLabel');
+
+        function openLightbox({ title, location, locLine1, locLine2, mapsUrl, timeStr, dateStr, lbTheme, description, eventUrl }) {
+            lightboxCard.className = `event-lightbox-card ${lbTheme}`;
+            lightboxTitle.textContent = title;
+            lightboxDateVal.textContent = dateStr;
+
+            let bodyHTML = '';
+            if (location) {
+                bodyHTML += `<p>${mapsUrl
+                    ? `<a href="${mapsUrl}" target="_blank">Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}</a>`
+                    : `Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}`}</p>`;
+            }
+            bodyHTML += `<p>Time: ${timeStr}</p>`;
+            if (description) {
+                let safeDesc = description
+                    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+                    .replace(/<(?!\/?(?:a|br|b|strong|em|i)\b)[^>]+>/gi, '');
+                safeDesc = safeDesc.replace(/<a\s/gi, '<a target="_blank" rel="noopener" ');
+                bodyHTML += `<p class="lb-description">${safeDesc}</p>`;
+            }
+            lightboxBody.innerHTML = bodyHTML;
+
+            const calendarUrl = 'https://www.rallytheallies.com/calendar.html';
+            const shareLink   = encodeURIComponent(calendarUrl);
+
+            const locationText = location ? ` 📍 ${locLine1}${locLine2 ? ', ' + locLine2 : ''}` : '';
+            const eventBlurb   = `${title} — ${timeStr}${locationText}`;
+            const fullText     = `RallyTheAllies.com — Get Involved In The Resistance ★\n${eventBlurb}\nBrowse our full calendar of activist events:`;
+            const encodedText  = encodeURIComponent(fullText);
+            const encodedQuote = encodeURIComponent(eventBlurb);
+
+            lbFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${shareLink}&quote=${encodedQuote}`;
+            lbTwitter.href  = `https://twitter.com/intent/tweet?text=${encodedText}&url=${shareLink}`;
+            lbCopyLabel.textContent = 'Copy Link';
+            lbCopyLink.onclick = () => {
+                navigator.clipboard.writeText(calendarUrl).then(() => {
+                    lbCopyLabel.textContent = 'Copied!';
+                    setTimeout(() => { lbCopyLabel.textContent = 'Copy Link'; }, 2000);
+                }).catch(() => { lbCopyLabel.textContent = 'Copy Link'; });
+            };
+
+            lightboxOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightboxOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', (e) => { if (e.target === lightboxOverlay) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        loadEvents();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rally the Allies - Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;700;900&family=DynaPuff:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ── EmailJS Configuration ──────────────────────────────────────────────
+        // Replace the three placeholder values below with your EmailJS credentials:
+        //   PUBLIC_KEY  → Account → General → Public Key
+        //   SERVICE_ID  → Email Services → your service ID
+        //   TEMPLATE_ID → Email Templates → your template ID
+        const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+        const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+        (function () { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
+
+        function sendEmail(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submit-btn');
+            const status = document.getElementById('form-status');
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            status.textContent = '';
+            status.className = 'form-status';
+
+            const templateParams = {
+                from_name:    document.getElementById('name').value,
+                from_email:   document.getElementById('email').value,
+                product:      document.getElementById('product').value,
+                message:      document.getElementById('message').value,
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(() => {
+                    status.textContent = "Message sent! We'll be in touch soon.";
+                    status.className = 'form-status success';
+                    document.getElementById('contact-form').reset();
+                    btn.textContent = 'Send Message';
+                    btn.disabled = false;
+                })
+                .catch(() => {
+                    status.textContent = 'Something went wrong. Please try again.';
+                    status.className = 'form-status error';
+                    btn.textContent = 'Send Message';
+                    btn.disabled = false;
+                });
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #FFFFFF; margin: 0; }
+
+        /* ── Nav ── */
+        nav {
+            position: fixed; top: 5%; left: 0; width: 100%;
+            background-color: #7BC4C4; display: flex;
+            justify-content: space-between; align-items: center;
+            padding: 1rem 2rem; z-index: 1000; height: 60px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 2rem; flex: 1; justify-content: center; }
+        .nav-links a {
+            color: white; text-decoration: none; font-size: clamp(16px, 1.5vw, 24px);
+            text-transform: uppercase; letter-spacing: 0.5px; transition: opacity 0.3s;
+            white-space: nowrap; display: flex; align-items: center; gap: 0.5rem;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-icon { display: inline-block; vertical-align: middle; stroke: white; margin: 0 0.3rem; }
+        .nav-links a .heavy { font-weight: 700; }
+        .nav-links a .light { font-weight: 300; }
+        .nav-star { color: #FF6B4A; font-size: 45px; line-height: 1; -webkit-text-stroke: 3px white; text-stroke: 3px white; flex-shrink: 0; }
+        .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+        .hamburger span { width: 30px; height: 3px; background-color: white; border-radius: 2px; }
+
+        @media (min-width: 768px) {
+            nav { padding: 1.2rem 3rem; height: 70px; }
+            .nav-star { font-size: 52px; }
+        }
+        @media (max-width: 767px) {
+            nav { padding: 0.8rem 1rem; height: 50px; }
+            .nav-links { gap: 1rem; }
+            .nav-star { font-size: 37px; -webkit-text-stroke: 2px white; text-stroke: 2px white; }
+        }
+
+        .page-body {
+            padding-top: calc(5% + 70px + 2rem);
+            padding-bottom: 5rem;
+            width: 100%;
+        }
+
+        /* ── Two-column row on desktop ── */
+        .content-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+            padding: 0 6rem;
+        }
+
+        /* Left third: copy */
+        .copy-section {
+            flex: 0 0 33%;
+            max-width: 33%;
+        }
+
+        /* Right two-thirds: form */
+        .form-section {
+            flex: 1;
+        }
+
+        .page-title {
+            font-family: 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(20px, 2.5vw, 40px);
+            font-weight: 700;
+            color: #e1502f;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .page-body-text {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: clamp(13px, 1.1vw, 18px);
+            color: #333333;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-section-title {
+            font-family: 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(20px, 2.5vw, 40px);
+            font-weight: 700;
+            color: #e1502f;
+            margin-bottom: 0.4rem;
+            line-height: 1.15;
+        }
+
+        .form-section-subtitle {
+            font-family: 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(16px, 1.8vw, 26px);
+            font-weight: 700;
+            color: #e1502f;
+            margin-bottom: 1.75rem;
+            line-height: 1.3;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 0.4rem;
+        }
+
+        label {
+            font-size: clamp(12px, 1vw, 14px);
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, textarea {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: clamp(13px, 1.1vw, 16px);
+            color: #333;
+            background: #f7f7f7;
+            border: 2px solid #e0e0e0;
+            border-radius: 0;
+            padding: 0.65rem 0.85rem;
+            width: 100%;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #7BC4C4;
+            background: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            align-self: flex-start;
+            background-color: #7BC4C4;
+            color: white;
+            font-family: 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(14px, 1.2vw, 18px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.85rem 2.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover { background-color: #6AB3B3; }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .form-status {
+            font-size: clamp(13px, 1.1vw, 16px);
+            font-weight: 600;
+            padding: 0.5rem 0;
+        }
+        .form-status.success { color: #7BC4C4; }
+        .form-status.error   { color: #e1502f; }
+
+        /* ── Stack on tablet/mobile ── */
+        @media (max-width: 900px) {
+            .content-row {
+                flex-direction: column;
+                padding: 0 10%;
+                align-items: center;
+            }
+            .copy-section {
+                flex: 0 0 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+            .form-section {
+                width: 100%;
+            }
+            .submit-btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#content">
+                <span class="heavy">Content</span>
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="light">Spaces</span>
+            </a>
+            <a href="index.html" style="text-decoration:none;"><span class="nav-star">★</span></a>
+            <a href="shop.html">
+                <span class="heavy">Souvenir</span>
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="light">Shop</span>
+            </a>
+        </div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="page-body">
+        <div class="content-row">
+
+            <!-- ── Left third: Copy ── -->
+            <div class="copy-section">
+                <h1 class="page-title">Amplify messaging by flooding the space</h1>
+                <p class="page-body-text">In marketing, a fundamental concept that has proven its power is the "Rule of 7." The idea is that 7 is the number of exposures to the same visual necessary for your brain to involuntarily absorb and commit it to memory. This is why branding centers around convention and consistency.</p>
+                <p class="page-body-text">Corporations are profiting off of this psychology, using fear tactics to motivate you. As a former corporate marketer, I'm dedicated to demystifying propaganda and repurposing my knowledge to educate the public about information warfare and commercial brainwashing.</p>
+                <p class="page-body-text" style="font-style: italic;">Use the "Rule of 7" to resist. Flood any space with "Flashmob Messaging" to amplify your impact on events.</p>
+            </div>
+
+            <!-- ── Right two-thirds: Form ── -->
+            <div class="form-section">
+                <h2 class="form-section-title">Custom made products available.</h2>
+                <p class="form-section-subtitle">Fill out the contact form to get a quote.</p>
+
+                <form id="contact-form" class="contact-form" onsubmit="sendEmail(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="product">Describe the product you would like custom made</label>
+                        <textarea id="product" name="product" placeholder="Browse the Printful and Printify catalogues to see blank product options" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Add any extra info you would like us to know"></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="submit-btn">Send Message</button>
+                    <p id="form-status" class="form-status"></p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

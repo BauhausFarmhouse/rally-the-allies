@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f750, 2025-12-25)"
+   sodipodi:docname="ContentBackground.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.52410024"
+     inkscape:cx="396.87064"
+     inkscape:cy="554.28328"
+     inkscape:window-width="1413"
+     inkscape:window-height="912"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g643"
+       inkscape:label="Red and Blue Shapes"
+       style="display:inline"
+       transform="matrix(0.06641301,0,0,0.06641301,58.457241,39.886549)">
+      <path
+         style="opacity:0.5;fill:#98cac8;fill-opacity:1"
+         d="m -866.2058,1069.499 1294.88929,866.2058 v 0 l -1294.8893,609.8796 v 0 z"
+         id="path514"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         style="fill:#f0a998;fill-opacity:1"
+         d="M -875.04464,945.75532 300.52038,1745.6699 371.23106,1710.3145 -888.3029,848.52814 Z"
+         id="path515" />
+      <path
+         style="opacity:1;fill:#ffffff;fill-opacity:1"
+         d="M -870.62523,1324.4039 468.45824,2234.8038 8.8388348,2438.097 -870.62523,1823.798 Z"
+         id="path516" />
+      <path
+         style="opacity:0.5;fill:#f0a998;fill-opacity:1"
+         d="m 2275.5805,1047.4019 -1077.9184,472.8777 1080.1281,726.9942 z"
+         id="path517"
+         sodipodi:nodetypes="cccc" />
+      <path
+         style="fill:#f0a998;fill-opacity:1"
+         d="M 2274.7417,2474.8737 583.3631,1281.631 517.07183,1316.9864 2277.1611,2567.6815 Z"
+         id="path519"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#cbe4e3;fill-opacity:1"
+         d="M 2277.1611,2647.231 406.5864,1316.9864 349.13397,1347.9223 2277.1611,2731.1999 Z"
+         id="path520"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1.59756"
+         d="M 2277.2498,1154.0733 773.4141,1877.7501 1077.0053,2075.4374 2277.25,1492.9657 Z"
+         id="path518"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#f0a998;fill-opacity:1"
+         d="m -868.79464,1733.7553 700.56502,487.4146 95.710679,-42.4804 -797.033959,-545.2864 z"
+         id="path521"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="opacity:0.5;fill:#cbe4e3;fill-opacity:1"
+         d="m -892.72231,2748.8776 1537.95725,-724.7844 335.87572,238.6485 -1891.51064,963.433 z"
+         id="path522" />
+      <path
+         style="opacity:0.5;fill:#cbe4e3;fill-opacity:1"
+         d="m 2262.7417,2881.4601 -724.7844,-512.6524 -477.2971,265.1651 1219.7592,981.1106 z"
+         id="path523" />
+    </g>
+  </g>
+</svg>

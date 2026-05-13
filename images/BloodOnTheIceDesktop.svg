@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1572.2101mm"
+   height="316.57251mm"
+   viewBox="0 0 1572.2101 316.57253"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(7792.8082,1044.4808)">
+    <rect
+       style="display:none;fill:#ff0000;stroke:#648d94;stroke-width:5.9;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       id="rect1"
+       width="716.79791"
+       height="585.43182"
+       x="-7803.4248"
+       y="-1046.0829"
+       ry="7.8264432"
+       transform="translate(4.9999999e-5)" />
+    <text
+       id="text35"
+       xml:space="preserve"
+       x="-7226.9414"
+       y="-745.04022"
+       style="font-size:4.23333px;opacity:0.4;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:20;stroke-dasharray:none;stroke-opacity:1"><tspan
+         id="tspan35"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:365.157px;font-family:'Nova Flat';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:20;stroke-dasharray:none;stroke-opacity:1"
+         x="-7226.9414"
+         y="-745.04022">ICE</tspan></text>
+    <path
+       id="path26"
+       d="m -7768.4843,-1008.0762 h 30.3273 c 3.9006,0 8.6892,1.1705 14.3654,3.5115 5.6748,2.341 8.5129,6.49113 8.5129,12.45025 v 11.06664 c 0,4.89479 -2.6966,9.04487 -8.0871,12.45023 -3.8308,2.34104 -8.7623,3.51155 -14.7912,3.51155 h -30.3273 z m 0,62.14424 h 30.3273 c 7.0929,0 13.6207,1.17053 19.5798,3.51156 8.5828,3.40501 12.8757,7.55509 12.8757,12.45023 v 28.30548 c 0,4.96605 -4.2929,9.11613 -12.8757,12.44988 -5.9591,2.34103 -12.4869,3.51155 -19.5798,3.51155 h -30.3273 z m 30.3273,79.38277 c 10.711,0 20.5722,-1.87855 29.5825,-5.63986 16.1029,-6.73876 24.1554,-16.56362 24.1554,-29.47564 v -28.30548 c 0,-11.56264 -7.5554,-20.64386 -22.6656,-27.24151 8.7256,-7.80309 13.0884,-15.7487 13.0884,-23.83613 v -11.06664 c 0,-13.05205 -6.4562,-22.87835 -19.3668,-29.47595 -7.5202,-3.7592 -15.7854,-5.6399 -24.7939,-5.6399 h -40.3299 l -11.2798,5.3206 v 155.36051 z"
+       style="fill:#648d94;fill-opacity:1;stroke:#ffffff;stroke-width:6.083;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path27"
+       d="m -7642.9186,-862.29271 20.218,-9.57686 v -159.61713 h -1.064 l -20.2184,9.5769 v 159.61709 z"
+       style="fill:#648d94;fill-opacity:1;stroke:#ffffff;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path28"
+       d="m -7564.1743,-955.93473 c 0,-3.54647 2.2162,-6.20677 6.6506,-7.98089 4.4326,-1.77235 9.8432,-2.6603 16.2278,-2.6603 6.3845,0 11.7933,0.88795 16.2277,2.6603 4.4327,1.77412 6.651,4.43442 6.651,7.98089 v 61.71848 c 0,3.54824 -2.2183,6.20853 -6.651,7.98089 -4.4344,1.77412 -9.8432,2.6603 -16.2277,2.6603 -6.3846,0 -11.7952,-0.88618 -16.2278,-2.6603 -4.4344,-1.77236 -6.6506,-4.43265 -6.6506,-7.98089 z m -1.3832,87.36401 c 7.1642,2.76648 15.2516,4.14973 24.2616,4.14973 9.0085,0 17.0956,-1.38325 24.2616,-4.14973 13.2651,-5.24933 19.8991,-12.55677 19.8991,-21.9209 V -959.659 c 0,-9.36449 -6.634,-16.67016 -19.8991,-21.92091 -7.166,-2.76683 -15.2531,-4.15007 -24.2616,-4.15007 -9.01,0 -17.0974,1.38324 -24.2616,4.15007 -13.2666,5.25075 -19.8992,12.55642 -19.8992,21.92091 v 69.16738 c 0,9.36413 6.6326,16.67157 19.8992,21.9209 z"
+       style="fill:#648d94;fill-opacity:1;stroke:#ffffff;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path29"
+       d="m -7443.9294,-955.93473 c 0,-3.54647 2.2161,-6.20677 6.6505,-7.98089 4.4327,-1.77235 9.8432,-2.6603 16.2278,-2.6603 6.3846,0 11.7933,0.88795 16.2278,2.6603 4.4326,1.77412 6.6509,4.43442 6.6509,7.98089 v 61.71848 c 0,3.54824 -2.2183,6.20853 -6.6509,7.98089 -4.4345,1.77412 -9.8432,2.6603 -16.2278,2.6603 -6.3846,0 -11.7951,-0.88618 -16.2278,-2.6603 -4.4344,-1.77236 -6.6505,-4.43265 -6.6505,-7.98089 z m -1.3832,87.36401 c 7.1641,2.76648 15.2515,4.14973 24.2615,4.14973 9.0085,0 17.0956,-1.38325 24.2616,-4.14973 13.2651,-5.24933 19.8991,-12.55677 19.8991,-21.9209 V -959.659 c 0,-9.36449 -6.634,-16.67016 -19.8991,-21.92091 -7.166,-2.76683 -15.2531,-4.15007 -24.2616,-4.15007 -9.01,0 -17.0974,1.38324 -24.2615,4.15007 -13.2666,5.25075 -19.8992,12.55642 -19.8992,21.92091 v 69.16738 c 0,9.36413 6.6326,16.67157 19.8992,21.9209 z"
+       style="fill:#648d94;fill-opacity:1;stroke:#ffffff;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path30"
+       d="m -7325.068,-868.57089 c 7.1645,2.76648 15.2516,4.15008 24.2616,4.15008 9.0085,0 17.0956,-1.3836 24.2619,-4.15008 13.2648,-5.10787 19.8991,-12.41354 19.8991,-21.9209 v -140.99501 h -1.0643 l -20.218,9.5768 v 39.79793 c -6.8104,-2.41088 -14.4371,-3.61773 -22.8787,-3.61773 -9.01,0 -17.0971,1.38324 -24.2616,4.15007 -13.2666,5.10752 -19.8992,12.41531 -19.8992,21.92056 v 69.16738 c 0,9.36413 6.6326,16.67192 19.8992,21.9209 z m 1.3832,-87.36401 c 0,-3.54647 2.2165,-6.20642 6.6506,-7.98089 4.433,-1.772 9.8432,-2.65994 16.2278,-2.65994 6.3849,0 11.7937,0.88794 16.2277,2.65994 4.4327,1.77447 6.651,4.43442 6.651,7.98089 v 61.71883 c 0,3.54824 -2.2183,6.20854 -6.651,7.98089 -4.434,1.77412 -9.8428,2.6603 -16.2277,2.6603 -6.3846,0 -11.7948,-0.88618 -16.2278,-2.6603 -4.4341,-1.77235 -6.6506,-4.43265 -6.6506,-7.98089 z"
+       style="fill:#648d94;fill-opacity:1;stroke:#ffffff;stroke-width:6;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       id="text30"
+       xml:space="preserve"
+       x="-7242.3706"
+       y="-758.11682"
+       style="font-size:4.23333px;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:20;stroke-dasharray:none;stroke-opacity:1"><tspan
+         id="tspan30"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:365.157px;font-family:'Nova Flat';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:20;stroke-dasharray:none;stroke-opacity:1"
+         x="-7242.3706"
+         y="-758.11682">ICE</tspan></text>
+    <text
+       id="text31"
+       xml:space="preserve"
+       x="-7240.9429"
+       y="-758.11682"
+       style="font-size:4.23333px;fill:none;fill-opacity:1;stroke:#648d94;stroke-width:5.9;stroke-dasharray:none;stroke-opacity:1"><tspan
+         id="tspan31"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:365.157px;font-family:'Nova Flat';writing-mode:lr-tb;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#648d94;stroke-width:5.9;stroke-dasharray:none;stroke-opacity:1"
+         x="-7240.9429"
+         y="-758.11682">ICE</tspan></text>
+    <text
+       id="text32"
+       xml:space="preserve"
+       x="-7021.6011"
+       y="-2625.5571"
+       style="font-size:3.80996px;display:inline;stroke-width:0.352778"
+       transform="rotate(-14.436583)"><tspan
+         id="tspan32"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:71.1746px;font-family:'Beth Ellen';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352778"
+         x="-7021.6011"
+         y="-2625.5571">on</tspan></text>
+    <text
+       id="text33"
+       xml:space="preserve"
+       x="-6585.4111"
+       y="-3336.3196"
+       style="font-size:3.80996px;stroke-width:0.352778"
+       transform="rotate(-21.056092)"><tspan
+         id="tspan33"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:71.1746px;font-family:'Beth Ellen';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352778"
+         x="-6585.4111"
+         y="-3336.3196">the</tspan></text>
+    <text
+       id="text34"
+       xml:space="preserve"
+       x="-6685.8525"
+       y="-873.34656"
+       style="font-size:4.23333px;stroke-width:0.352778"><tspan
+         id="tspan34"
+         style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32.5797px;font-family:'Beth Ellen';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352778"
+         x="-6685.8525"
+         y="-873.34656">A Hockey Fan’s Collection</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1717.8087mm"
+   height="298.09369mm"
+   viewBox="0 0 1717.8086 298.09369"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <path
+         d="M 0,0 H 6666.6667 V 1333.3333 H 0 Z"
+         id="path5" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4">
+      <path
+         d="M 2492.0676,-285.57811 H -0.002475 V 75.102902 H 2492.0676 Z"
+         id="path4" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7">
+      <path
+         d="M 0,0 H 6666.6667 V 1333.3333 H 0 Z"
+         id="path7" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath6">
+      <path
+         d="M 2492.0676,-285.57848 H -0.002475 V 75.102577 H 2492.0676 Z"
+         id="path6" />
+    </clipPath>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(5022.881,954.0429)">
+    <g
+       id="g11"
+       transform="translate(-4298.9315,-1029.7336)">
+      <text
+         id="text2"
+         xml:space="preserve"
+         x="-733.68872"
+         y="157.35924"
+         style="font-size:4.23333px;stroke-width:0.352778"><tspan
+           id="tspan2"
+           style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:117.34px;font-family:'Major Mono Display';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352778"
+           x="-733.68872"
+           y="157.35924">The</tspan></text>
+      <text
+         id="text3"
+         xml:space="preserve"
+         x="-733.68872"
+         y="265.22464"
+         style="font-size:4.23333px;stroke-width:0.352778"><tspan
+           id="tspan3"
+           style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:117.34px;font-family:'Major Mono Display';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352778"
+           x="-733.68872"
+           y="265.22464">Collection</tspan></text>
+      <text
+         id="text4"
+         xml:space="preserve"
+         x="-733.68872"
+         y="370.61734"
+         style="font-size:4.23333px;stroke-width:0.352778"><tspan
+           id="tspan4"
+           style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:117.34px;font-family:'Major Mono Display';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352778"
+           x="-733.68872"
+           y="370.61734">COLLECTION</tspan></text>
+      <g
+         opacity="0.300003"
+         id="g5"
+         clip-path="url(#clipPath5)"
+         transform="matrix(0.26458333,0,0,0.26458333,-747.79981,41.981437)">
+        <text
+           xml:space="preserve"
+           transform="matrix(-1.3333333,0,0,1.3333333,6619.9167,842.2188)"
+           clip-path="url(#clipPath4)"
+           id="text5"><tspan
+             style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:336.77px;font-family:'Major Mono Display';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             x="0"
+             y="0"
+             id="tspan5">Collection</tspan></text>
+      </g>
+      <g
+         opacity="0.300003"
+         id="g6"
+         clip-path="url(#clipPath7)"
+         transform="matrix(0.26458333,0,0,0.26458333,-747.79981,41.981437)">
+        <text
+           xml:space="preserve"
+           transform="matrix(-1.3333333,0,0,1.3333333,6619.9167,1245.5273)"
+           clip-path="url(#clipPath6)"
+           id="text6"><tspan
+             style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:336.77px;font-family:'Major Mono Display';writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             x="0"
+             y="0"
+             id="tspan6">COLLECTION</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

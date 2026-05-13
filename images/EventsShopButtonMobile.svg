@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="698.44318mm"
+   height="132.29166mm"
+   viewBox="0 0 698.44318 132.29165"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="EventsProtestSign.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="1.2762338e-19"
+       width="698.44318"
+       height="132.29166"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-1780.674,4736.0422)">
+    <rect
+       style="display:inline;fill:#588e95;fill-opacity:1;stroke-width:0.206247"
+       id="rect34"
+       width="698.44318"
+       height="132.29169"
+       x="1780.674"
+       y="-4736.042"
+       ry="0.40007564"
+       inkscape:export-filename="../EventsShopButtonMobile.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:89.8204px;font-family:'Montserrat Alternates';-inkscape-font-specification:'Montserrat Alternates Bold';writing-mode:lr-tb;direction:ltr;display:inline;fill:#ffffff;fill-opacity:1;stroke-width:39.1817"
+       x="1796.8811"
+       y="-4652.0928"
+       id="text35"><tspan
+         sodipodi:role="line"
+         id="tspan35"
+         style="fill:#ffffff;stroke-width:39.1817"
+         x="1796.8811"
+         y="-4652.0928">SHOP</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:62.4161px;font-family:'Montserrat Alternates';-inkscape-font-specification:'Montserrat Alternates Bold';writing-mode:lr-tb;direction:ltr;display:inline;opacity:0.5;fill:#ffffff;fill-opacity:1;stroke-width:27.2274"
+       x="2064.5425"
+       y="-4628.7036"
+       id="text36"><tspan
+         sodipodi:role="line"
+         id="tspan36"
+         style="fill:#ffffff;stroke-width:27.2274"
+         x="2064.5425"
+         y="-4628.7036">protest gear</tspan></text>
+  </g>
+</svg>

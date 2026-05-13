@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rally the Allies - Content Spaces</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://www.rallytheallies.com/calendar.html">
+    <meta property="og:title"       content="Rally The Allies — Get Involved In The Resistance">
+    <meta property="og:description" content="Browse our full calendar of activist events at RallyTheAllies.com">
+    <meta property="og:image"       content="https://www.rallytheallies.com/images/LAlogo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:url"         content="https://www.rallytheallies.com/calendar.html">
+    <meta name="twitter:title"       content="Rally The Allies — Get Involved In The Resistance">
+    <meta name="twitter:description" content="Browse our full calendar of activist events at RallyTheAllies.com">
+    <meta name="twitter:image"       content="https://www.rallytheallies.com/images/LAlogo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #FFFFFF;
+            padding-top: 0;
+            padding-left: 0;
+            padding-right: 0;
+            margin: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 5%;
+            left: 0;
+            width: 100%;
+            background-color: #7BC4C4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: clamp(16px, 1.5vw, 24px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-icon {
+            display: inline-block;
+            vertical-align: middle;
+            stroke: white;
+            margin: 0 0.3rem;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Different weights for different words */
+        .nav-links a .heavy {
+            font-weight: 700;
+        }
+
+        .nav-links a .light {
+            font-weight: 300;
+        }
+
+        .nav-star {
+            color: #FF6B4A;
+            font-size: 45px;
+            line-height: 1;
+            -webkit-text-stroke: 3px white;
+            text-stroke: 3px white;
+            flex-shrink: 0;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* CSS Parallelogram Shapes - Single long diagonal stripe */
+        .shape-fill-container {
+            position: absolute;
+            bottom: 10%;
+            left: 35%;
+            width: 70%;
+            height: 80%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .shape-teal {
+            position: absolute;
+            bottom: 3%; /* Down from 4% */
+            left: -3%; /* More left from -2% */
+            width: 150%;
+            height: 14%; /* Slightly wider from 13% */
+            background-color: #7BC4C4;
+            opacity: 0.12;
+            transform: skewY(33deg);
+            transform-origin: left center;
+            clip-path: polygon(0 100%, 100% 100%, 100% 0, 7.5% 0);
+        }
+
+        /* Background Shapes */
+        .background-shapes {
+            position: relative;
+            width: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .background-shapes img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* First instance - higher, overlaps with hero */
+        .background-shapes-1 {
+            margin-top: -55%; /* Pull up much higher to overlap with hero area */
+        }
+
+        /* Second instance - lower, for next section */
+        .background-shapes-2 {
+            margin-top: -50%; /* More overlap - less gap between instances */
+        }
+
+        /* Content Section with Background Shapes */
+        .content-section {
+            position: relative;
+            background-image: url('images/background-shapes.svg');
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            background-position: top center;
+            margin-top: -80%; /* Slightly less negative - was -85% */
+            padding: 4rem 0;
+        }
+
+        /* Logo Section */
+        .logo-container {
+            position: absolute;
+            top: clamp(0px, 100px - 0.05 * 100vw, 100px); /* 0px on large screens, 100px on small */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 0;
+            z-index: 5; /* Above background shapes */
+        }
+
+        .logo {
+            width: 95%;
+            max-width: 95%;
+            height: auto;
+            display: block;
+        }
+
+        /* Hero Section with Characters */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: clamp(18%, 20vw, 28%); /* More margin on smaller screens to avoid blocking logo text */
+            padding-top: clamp(50px, 10vw, 150px); /* Additional padding that increases on smaller screens */
+        }
+
+        .hero-container {
+            position: relative;
+            width: 95%;
+            max-width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10; /* Above background shapes */
+        }
+
+        .hero-characters {
+            width: 100%;
+            height: auto;
+            display: block;
+            z-index: 10;
+        }
+
+        .hero-tagline {
+            position: absolute;
+            bottom: 5%;
+            right: 2%;
+            width: 63%; /* Reduced by 5% from 68% */
+            height: auto;
+            z-index: 12; /* Above characters */
+        }
+
+        /* Content Boxes Section */
+        .content-boxes {
+            display: flex;
+            gap: 2rem;
+            padding: 0 2.5%;
+            max-width: 95%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .content-box {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 0;
+            position: relative;
+            /* Removed min-height - let boxes shrink to fit content */
+            container-type: inline-size;
+        }
+
+        /* Red/Orange border box - RIGHT ALIGNED */
+        .content-box-red {
+            border-left: 15px solid #e1502f;
+            border-right: 40px solid #e1502f;
+        }
+
+        .content-box-red .box-title,
+        .content-box-red .box-content {
+            text-align: right; /* Right align everything */
+        }
+
+        /* Blue/Teal border box - LEFT ALIGNED */
+        .content-box-blue {
+            border-left: 15px solid #588e95;
+            border-right: 40px solid #588e95;
+        }
+
+        .content-box-blue .box-title,
+        .content-box-blue .box-content {
+            text-align: left; /* Left align everything */
+        }
+
+        .box-title {
+            background-color: #ffffff;
+            color: #e1502f;
+            font-family: 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(24px, 5cqi, 40px);
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0 0 0;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block; /* Changed from inline-block */
+            width: fit-content; /* Only as wide as content */
+        }
+
+        .content-box-red .box-title {
+            margin-left: auto; /* Push to right for red box */
+        }
+
+        .content-box-blue .box-title {
+            color: #588e95;
+            margin-left: 0; /* Keep on left for blue box */
+        }
+
+        .box-content {
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem; /* Reduced bottom padding */
+            color: #333333;
+            font-family: 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(14px, 2.5cqi, 19px);
+            line-height: 1.5;
+        }
+
+        .box-content p {
+            margin-bottom: 1rem;
+        }
+
+        .box-content p.divider {
+            margin: 0.2rem 0; /* Minimal spacing */
+        }
+
+        .box-content p.divider + p {
+            margin-top: 0.2rem; /* Match spacing after divider */
+        }
+
+        /* Reduce space before divider by targeting the paragraph that comes before it */
+        .box-content p:has(+ p.divider) {
+            margin-bottom: 0.2rem;
+        }
+
+        .intro-text {
+            font-size: clamp(12px, 2.5cqi, 18px); /* Smaller max to naturally fit on one line */
+            font-weight: 900;
+            line-height: 1.5;
+            margin-bottom: 0;
+            /* Removed white-space: nowrap so it can wrap if needed on small screens */
+        }
+
+        .intro-text-small {
+            font-size: clamp(12px, 2.3cqi, 17px); /* Smaller max */
+            font-weight: 900;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            /* Removed white-space: nowrap */
+        }
+
+        
+
+        /* Mobile: Stack vertically */
+        @media (max-width: 767px) {
+            .content-boxes {
+                flex-direction: column;
+            }
+        }
+
+        /* Tablet and larger devices */
+        @media (min-width: 768px) {
+            .logo {
+                width: 95%; /* 95% on desktop as requested */
+                max-width: 95%;
+            }
+
+            nav {
+                padding: 1.2rem 3rem;
+                height: 70px; /* Slightly taller on desktop */
+            }
+
+            .nav-star {
+                font-size: 52px; /* 75% of 70px */
+            }
+        }
+
+        /* Fine-tuning for very large screens */
+        @media (min-width: 1920px) {
+            /* Styles can be added here if needed */
+        }
+
+        /* Events Section */
+        .events-section {
+            position: relative;
+            margin-top: -40%;
+            padding-top: 40%;
+            background-image: url('images/background-shapes.svg');
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            background-position: top center;
+        }
+
+        .events-banner-wrapper {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 120px;
+            z-index: 999;
+            background: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .events-banner {
+            width: 100%;
+            height: 60px;
+            display: block;
+        }
+
+        /* Show appropriate SVG for screen size */
+        .events-banner-wide {
+            display: block;
+        }
+        .events-banner-tablet {
+            display: none;
+        }
+        .events-banner-mobile {
+            display: none;
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .events-banner-wide {
+                display: none;
+            }
+            .events-banner-tablet {
+                display: block;
+            }
+            .events-banner-mobile {
+                display: none;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .events-banner-wide {
+                display: none;
+            }
+            .events-banner-tablet {
+                display: none;
+            }
+            .events-banner-mobile {
+                display: block;
+            }
+        }
+
+        /* Mobile: 5% (nav top) + 50px (nav height) = same relative position as desktop */
+        @media (max-width: 767px) {
+            .events-banner-wrapper {
+                top: calc(5% + 50px);
+            }
+        }
+
+        /* Events Carousel */
+        .events-carousel-container {
+            position: relative;
+            max-width: 90%;
+            margin: 3rem auto;
+            padding: 0 60px;
+            overflow: visible;
+        }
+
+        .events-carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            overflow-y: visible; /* Allow star vertically */
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4rem; /* Space for star */
+        }
+
+        .events-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .event-box {
+            flex: 0 0 calc(33.333% - 1.5rem);
+            min-width: calc(33.333% - 1.5rem);
+            max-width: calc(33.333% - 1.5rem);
+            aspect-ratio: 1 / 1;
+            padding: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            container-type: inline-size; /* Enable container queries */
+        }
+
+        /* Blue-themed boxes (FIRST - boxes 1, 3, etc.) */
+        .event-box-blue {
+            background-color: rgba(171, 198, 202, 0.5);
+        }
+
+        .event-box-blue .event-title {
+            background-color: #588e95;
+        }
+
+        .event-box-blue .event-star {
+            background-color: #588e95;
+        }
+
+        .event-box-blue .event-date {
+            background-color: #588e95;
+        }
+
+        /* Red-themed boxes (SECOND - boxes 2, 4, etc.) */
+        .event-box-red {
+            background-color: rgba(252, 238, 234, 0.5);
+        }
+
+        .event-box-red .event-title {
+            background-color: #e1502f;
+        }
+
+        .event-box-red .event-star {
+            background-color: #e1502f;
+        }
+
+        .event-box-red .event-date {
+            background-color: #e1502f;
+        }
+
+        /* Title bar - needs container queries for responsive font */
+        .event-title {
+            font-family: 'DynaPuff', 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: 8cqi; /* Scales with tile width */
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            container-type: inline-size; /* Enable for title bar */
+        }
+
+        /* Content area - MUCH BIGGER FONTS to fill space */
+        .event-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 15cqi; /* leave room for the absolute date ribbon */
+        }
+
+        .event-subtitle {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(18px, 7cqi, 40px); /* MUCH BIGGER */
+            font-weight: 700;
+            color: #333333;
+            padding: 0 3cqi;
+            margin: 1cqi 0;
+            text-align: center;
+        }
+
+        .event-detail {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(16px, 6cqi, 28px); /* MUCH BIGGER */
+            font-weight: 700;
+            color: #333333;
+            padding: 0 3cqi;
+            margin: 1cqi 0;
+            text-align: center;
+        }
+
+        .event-location,
+        .event-time {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(16px, 6cqi, 28px); /* MUCH BIGGER */
+            font-weight: 700;
+            color: #333333;
+            padding: 0 3cqi;
+            margin: 1cqi 0;
+            text-align: center;
+        }
+
+        .event-location a {
+            color: #333333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        /* Blue tile: location link — visited=black, hover=red, hover beats visited */
+        .event-box-blue .event-location a:visited { color: #333333; }
+        .event-box-blue .event-location a:hover   { color: #e1502f; }
+        .event-box-blue .event-location a:visited:hover { color: #e1502f; }
+
+        /* Red tile: location link — visited=black, hover=teal, hover beats visited */
+        .event-box-red .event-location a:visited { color: #333333; }
+        .event-box-red .event-location a:hover   { color: #588e95; }
+        .event-box-red .event-location a:visited:hover { color: #588e95; }
+
+        /* Date ribbon - BACK to 15cqi */
+        .event-date {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 15cqi; /* BACK to original */
+            background-color: #588e95;
+            padding: 0.5cqi 2cqi;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5cqi;
+        }
+
+        .event-date-label {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: 4.5cqi; /* Back to original */
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-align: left;
+        }
+
+        .event-date-value {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: 11cqi; /* Back to original */
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-align: right;
+        }
+
+        /* Carousel arrows - BLACK and OUTSIDE boxes */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #000000;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-arrow:hover {
+            background-color: #333333;
+        }
+
+        .carousel-arrow-left {
+            left: 0; /* Outside the carousel */
+        }
+
+        .carousel-arrow-right {
+            right: 0; /* Outside the carousel */
+        }
+
+        .events-loading {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(16px, 2vw, 24px);
+            color: #588e95;
+            padding: 3rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .events-error {
+            font-family: system-ui, sans-serif;
+            font-size: clamp(14px, 1.5vw, 18px);
+            color: #e1502f;
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Carousel dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #000000;
+        }
+
+        /* More Info link on tile */
+        .event-more-info {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(12px, 4.5cqi, 20px);
+            font-weight: 700;
+            color: #333333;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            margin: 1cqi 0 0 0;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 100%;
+            transition: color 0.2s;
+        }
+
+        /* Blue tile → More Info turns red on hover; visited class turns red */
+        .event-box-blue .event-more-info { color: #333333; }
+        .event-box-blue .event-more-info:hover,
+        .event-box-blue .event-more-info.visited { color: #e1502f; }
+
+        /* Red tile → More Info turns teal on hover; visited class turns teal */
+        .event-box-red .event-more-info { color: #333333; }
+        .event-box-red .event-more-info:hover,
+        .event-box-red .event-more-info.visited { color: #588e95; }
+
+        /* Lightbox overlay */
+        .event-lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-lightbox-overlay.active {
+            display: flex;
+        }
+
+        /* Lightbox card - same brand styling as tile */
+        .event-lightbox-card {
+            position: relative;
+            width: clamp(320px, 80vw, 600px);
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .event-lightbox-card.lb-blue {
+            background-color: rgba(171, 198, 202, 0.95);
+        }
+
+        .event-lightbox-card.lb-red {
+            background-color: rgba(252, 238, 234, 0.95);
+        }
+
+        .event-lightbox-title {
+            font-family: 'DynaPuff', 'Montserrat Alternates', system-ui, sans-serif;
+            font-size: clamp(18px, 4vw, 32px);
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            padding: 0.75rem 3rem 0.75rem 1.2rem;
+            text-align: center;
+        }
+
+        .lb-blue .event-lightbox-title { background-color: #588e95; }
+        .lb-red  .event-lightbox-title { background-color: #e1502f; }
+
+        .event-lightbox-body {
+            padding: 1.2rem 1.5rem 70px 1.5rem; /* 70px = date ribbon height + small buffer */
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .event-lightbox-body p {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(14px, 2.2vw, 20px);
+            font-weight: 700;
+            color: #333333;
+            text-align: center;
+            margin: 0.6rem 0;
+            line-height: 1.4;
+        }
+
+        .event-lightbox-body .lb-description {
+            font-size: 16px;
+            font-weight: 400;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin-top: 1rem;
+            line-height: 1.6;
+            text-align: center;
+            white-space: pre-wrap;
+        }
+
+        /* Description links — theme-aware, no underline, visited=black, hover always wins */
+        .lb-blue .event-lightbox-body .lb-description a,
+        .lb-blue .event-lightbox-body a {
+            color: #333333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .lb-blue .event-lightbox-body .lb-description a:visited,
+        .lb-blue .event-lightbox-body a:visited { color: #333333; }
+        .lb-blue .event-lightbox-body .lb-description a:hover,
+        .lb-blue .event-lightbox-body a:hover { color: #e1502f; }
+        .lb-blue .event-lightbox-body .lb-description a:visited:hover,
+        .lb-blue .event-lightbox-body a:visited:hover { color: #e1502f; }
+
+        .lb-red .event-lightbox-body .lb-description a,
+        .lb-red .event-lightbox-body a {
+            color: #333333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .lb-red .event-lightbox-body .lb-description a:visited,
+        .lb-red .event-lightbox-body a:visited { color: #333333; }
+        .lb-red .event-lightbox-body .lb-description a:hover,
+        .lb-red .event-lightbox-body a:hover { color: #588e95; }
+        .lb-red .event-lightbox-body .lb-description a:visited:hover,
+        .lb-red .event-lightbox-body a:visited:hover { color: #588e95; }
+
+        /* Mobile: lightbox goes taller/portrait */
+        @media (max-width: 640px) {
+            .event-lightbox-card {
+                width: clamp(280px, 90vw, 400px);
+                max-height: 80vh;
+            }
+        }
+
+        /* Lightbox footer — holds share strip (left) and date ribbon (right) */
+        .event-lightbox-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        /* Share strip — left half */
+        .event-lightbox-share {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 0.6rem;
+            gap: 0.3rem;
+        }
+
+        .lb-blue .event-lightbox-share { background-color: rgba(88, 142, 149, 0.18); }
+        .lb-red  .event-lightbox-share { background-color: rgba(225, 80, 47, 0.12); }
+
+        .lb-share-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.3rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s, transform 0.15s;
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .lb-share-btn:hover { opacity: 0.65; transform: scale(1.12); }
+
+        .lb-share-btn svg { display: block; }
+
+        .lb-share-label {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #555;
+            text-align: center;
+            margin-top: 1px;
+            white-space: nowrap;
+        }
+
+        .lb-share-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+        }
+
+        /* Date ribbon — right half */
+        .event-lightbox-date {
+            width: 50%;
+            flex-shrink: 0;
+            padding: 0.4rem 1rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        .lb-blue .event-lightbox-date { background-color: #588e95; }
+        .lb-red  .event-lightbox-date { background-color: #e1502f; }
+
+        .event-lightbox-date-label {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(11px, 1.5vw, 16px);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-align: left;
+        }
+
+        .event-lightbox-date-value {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(18px, 3vw, 30px);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-align: right;
+        }
+
+        /* Close button */
+        .event-lightbox-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.6rem;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            line-height: 1;
+            z-index: 10;
+            padding: 0 0.3rem;
+        }
+
+        .event-lightbox-close:hover {
+            opacity: 0.75;
+        }
+
+        /* Tablet: 2 boxes visible */
+        @media (max-width: 1024px) {
+            .event-box {
+                flex: 0 0 calc(50% - 1rem);
+                min-width: calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        /* Mobile: 1 box visible */
+        @media (max-width: 640px) {
+            .event-box {
+                flex: 0 0 100%;
+                min-width: 100%;
+                max-width: 100%;
+                aspect-ratio: 1 / 1;
+            }
+
+            .events-carousel-container {
+                padding: 0 60px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Products Section - Desktop */
+        .products-section {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Desktop full-width horizontal image */
+        .products-desktop-image {
+            width: 90%;
+            margin: 0 auto;
+            line-height: 0;
+        }
+
+        .products-desktop-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Desktop: protest sign + text + buttons in a row */
+        .products-desktop {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            width: 90%;
+            margin: 3rem auto;
+        }
+
+        .products-protest-sign {
+            flex: 0 0 30%;
+            max-width: 30%;
+            line-height: 0;
+        }
+
+        .products-protest-sign img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .products-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .products-text h2 {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(22px, 2.5vw, 38px);
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .products-text p {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: clamp(15px, 1.4vw, 22px);
+            color: #000000;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .products-text p strong {
+            font-weight: 700;
+        }
+
+        .products-text .text-spacer {
+            margin-top: 0.5rem;
+        }
+
+        .products-buttons-col {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .products-buttons-col a img {
+            width: clamp(180px, 18vw, 300px);
+            height: auto;
+            display: block;
+            transition: transform 0.2s;
+        }
+
+        .products-buttons-col a:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Mobile: image full width, then donate button, then text, then shop button */
+        .products-mobile {
+            display: none;
+        }
+
+        .products-mobile-image {
+            margin-left: 5%;
+            margin-right: -10%; /* pulls right edge past viewport */
+            line-height: 0;
+        }
+
+        .products-mobile-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .products-mobile-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.2rem;
+        }
+
+        .products-mobile-buttons a {
+            display: block;
+            width: 90%;
+        }
+
+        .products-mobile-buttons a img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.2s;
+        }
+
+        .products-mobile-buttons a:hover img {
+            transform: scale(1.02);
+        }
+
+        .products-mobile-text {
+            width: 80%;
+            margin: 1.5rem auto;
+            text-align: center;
+        }
+
+        .products-mobile-text h2 {
+            font-family: 'DynaPuff', system-ui, sans-serif;
+            font-size: clamp(20px, 5vw, 32px);
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .products-mobile-text p {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: clamp(14px, 3.5vw, 20px);
+            color: #000000;
+            line-height: 1.5;
+            margin: 0 0 1rem 0;
+        }
+
+        @media (max-width: 1024px) {
+            .products-desktop-image {
+                display: none;
+            }
+            .products-desktop {
+                display: none;
+            }
+            .products-mobile {
+                display: block;
+                padding-bottom: 3rem;
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            nav {
+                padding: 0.8rem 1rem;
+                height: 50px; /* Smaller on mobile */
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-star {
+                font-size: 37px; /* 75% of 50px */
+                -webkit-text-stroke: 2px white;
+                text-stroke: 2px white;
+            }
+        }
+        /* ── Content Section ─────────────────────────────────────────────── */
+        .content-section-new {
+            background-color: #2b2b2b;
+            padding-bottom: 6rem;
+        }
+
+        .content-banner-wrapper {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 120px;
+            z-index: 999;
+            background: transparent;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 767px) {
+            .content-banner-wrapper {
+                top: calc(5% + 50px);
+            }
+        }
+
+        .content-banner {
+            width: 100%;
+            height: 60px;
+            display: block;
+        }
+
+        .content-banner-wide   { display: block; }
+        .content-banner-tablet { display: none;  }
+        .content-banner-mobile { display: none;  }
+
+        @media (max-width: 1024px) {
+            .content-banner-wide   { display: none;  }
+            .content-banner-tablet { display: block; }
+            .content-banner-mobile { display: none;  }
+        }
+        @media (max-width: 640px) {
+            .content-banner-wide   { display: none;  }
+            .content-banner-tablet { display: none;  }
+            .content-banner-mobile { display: block; }
+        }
+
+        /* ── Custom messaging link ── */
+        a.custom-quote-link {
+            color: inherit;
+            text-decoration: none;
+            font-weight: inherit;
+            cursor: pointer;
+        }
+        a.custom-quote-link:hover {
+            color: #7BC4C4;
+        }
+        a.custom-quote-link:visited {
+            color: #e1502f;
+        }
+
+        /* ── Content In Spaces Hero ── */
+        .content-spaces-hero {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .content-spaces-hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            padding: 0 2px; /* tiny gutter each side */
+        }
+
+        .content-spaces-hero-mobile { display: none; }
+
+        @media (max-width: 767px) {
+            .content-spaces-hero-desktop { display: none; }
+            .content-spaces-hero-mobile  { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-links">
+            <a href="#content">
+                <span class="heavy">Content</span>
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="light">Spaces</span>
+            </a>
+            <a href="index.html" style="text-decoration:none;"><span class="nav-star">★</span></a>
+            <a href="shop.html">
+                <span class="heavy">Souvenir</span>
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="light">Shop</span>
+            </a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="images/LAlogo.svg" alt="Liberal Arts Logo" class="logo">
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <!-- Container for layered hero elements -->
+        <div class="hero-container">
+            <!-- CSS Parallelogram Shape -->
+            <div class="shape-fill-container">
+                <div class="shape-teal"></div>
+            </div>
+            
+            <!-- Hero Characters SVG -->
+            <img src="images/hero-characters.svg" alt="Rally the Allies Characters" class="hero-characters">
+            
+            <!-- Tagline Typography SVG - positioned in lower right -->
+            <img src="images/hero-tagline.svg" alt="Rally The Allies Tagline" class="hero-tagline">
+        </div>
+    </div>
+
+    <!-- Background Shapes - First instance (higher, transitions from hero) -->
+    <div class="background-shapes background-shapes-1">
+        <img src="images/background-shapes.svg" alt="">
+    </div>
+
+    <!-- Content Section with Background -->
+    <section class="content-section">
+        <!-- Content Boxes -->
+        <div class="content-boxes">
+            <!-- Box 1: Red/Orange border -->
+            <div class="content-box content-box-red">
+            <h2 class="box-title">Come in and stay for a while...</h2>
+            <div class="box-content">
+                <p class="intro-text"><strong>Welcome to LibeRally Arts, an escape from the internet,<br>
+                without leaving the comfort of the internet.</strong></p>
+                <p class="intro-text-small"><strong>Allow us to entertain you while challenging you to think!</strong></p>
+                <p>Follow Lou, <em>the non-binary neuroqueer digital overlord of RallyTheAllies</em>, down-page to enter the labyrinth of rebellion, neo-protest, and peaceful solutions.</p>
+               
+                <p>Explore the themed collections of apparel and functional products in our store, which is packed with thousands of unique souvenirs to remind you of your visit.</p>
+            </div>
+        </div>
+
+        <!-- Box 2: Blue/Teal border -->
+        <div class="content-box content-box-blue">
+            <h2 class="box-title">What is LibeRally Arts?</h2>
+            <div class="box-content">
+                <p><strong>It is difficult to feel connected to our communities when the spaces where we are celebrated have been compromised by violence and the weaponization of ignorance.</strong></p>
+                <p>In response, we envisioned a new kind of immersive online environment that would become a familiar companion over time, like visiting a good friend, or your favorite establishment.</p>
+                <p>Within this site, we have created an oasis of worlds for you to explore –an online safe space that anyone can access from anywhere– to replenish just a little of what we have collectively lost.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <!-- Events Banner with cutout text and stars using SVG mask -->
+        <div class="events-banner-wrapper">
+            <!-- Desktop/wide viewBox -->
+            <svg class="events-banner events-banner-wide" viewBox="0 0 1400 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="eventsMaskWide">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="700" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">EVENTS</text>
+                        <!-- Left stars - evenly spaced, left of 35% -->
+                        <text x="200" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="290" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="380" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="470" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <!-- Right stars - evenly spaced, right of 65% -->
+                        <text x="930" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1020" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1110" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1200" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#588e95" mask="url(#eventsMaskWide)"/>
+            </svg>
+            
+            <!-- Tablet viewBox - narrower so stars are closer -->
+            <svg class="events-banner events-banner-tablet" viewBox="0 0 1100 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="eventsMaskTablet">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="550" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">EVENTS</text>
+                        <!-- Left stars - evenly spaced, 70px apart -->
+                        <text x="150" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="220" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="290" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="360" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <!-- Right stars - evenly spaced, 70px apart -->
+                        <text x="740" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="810" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="880" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="950" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#588e95" mask="url(#eventsMaskTablet)"/>
+            </svg>
+            
+            <!-- Mobile viewBox - very narrow so stars are very close -->
+            <svg class="events-banner events-banner-mobile" viewBox="0 0 800 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="eventsMaskMobile">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="400" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">EVENTS</text>
+                        <!-- Left stars - evenly spaced, 50px apart -->
+                        <text x="90" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="140" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="190" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="240" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <!-- Right stars - evenly spaced, 50px apart -->
+                        <text x="560" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="610" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="660" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="710" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#588e95" mask="url(#eventsMaskMobile)"/>
+            </svg>
+        </div>
+
+        <!-- Events content will go here -->
+
+        <!-- Events Carousel - populated dynamically from Google Calendar -->
+        <div class="events-carousel-container">
+            <button class="carousel-arrow carousel-arrow-left" aria-label="Previous events">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.5 3L5.5 9L11.5 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="carousel-arrow carousel-arrow-right" aria-label="Next events">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 3L12.5 9L6.5 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="events-carousel" id="events-carousel">
+                <!-- Loading state -->
+                <div class="events-loading">Loading upcoming events...</div>
+            </div>
+            <div class="carousel-dots" id="carousel-dots"></div>
+        </div>
+
+        <!-- Products/Shop Section -->
+        <section class="products-section">
+
+            <!-- DESKTOP: full-width horizontal image (hidden on tablet/mobile) -->
+            <div class="products-desktop-image">
+                <img src="images/HomePageEventsSectionProductsImage.png" alt="Rally The Allies Merchandise">
+            </div>
+
+            <!-- DESKTOP: protest sign + text + buttons in a row (hidden on tablet/mobile) -->
+            <div class="products-desktop">
+                <div class="products-protest-sign">
+                    <img src="images/EventsProtestSign.svg" alt="Protest Sign">
+                </div>
+                <div class="products-text">
+                    <h2>Flash Mob Messaging</h2>
+                    <p>Mass t-shirt giveaways flood public spaces with messaging acting as force multipliers for any campaign or movement, <strong>maximizing impact</strong>.</p>
+                    <p class="text-spacer">Donations cover the cost of giveaway items, volunteers make this possible.</p>
+                    <p><a href="contact.html" class="custom-quote-link">Quotes for custom messaging available.</a></p>
+                </div>
+                <div class="products-buttons-col">
+                    <a href="donate.html">
+                        <img src="images/EventsDonateButton.svg" alt="Donate - gear giveaway">
+                    </a>
+                    <a href="shop.html">
+                        <img src="images/EventsShopButton.svg" alt="Shop protest gear">
+                    </a>
+                </div>
+            </div>
+
+            <!-- MOBILE: full-width image, then donate button, then text, then shop button (hidden on desktop) -->
+            <div class="products-mobile">
+                <div class="products-mobile-image">
+                    <img src="images/HomePageEventsSectionProductsMobile.png" alt="Rally The Allies Merchandise">
+                </div>
+                <div class="products-mobile-buttons">
+                    <a href="donate.html">
+                        <img src="images/EventsDonateButtonMobile.svg" alt="Donate - gear giveaway">
+                    </a>
+                </div>
+                <div class="products-mobile-text">
+                    <h2>Flash Mob Messaging</h2>
+                    <p>Mass t-shirt giveaways flood public spaces with messaging acting as force multipliers for any campaign or movement, <strong>maximizing impact</strong>.</p>
+                    <p>Donations cover the cost of giveaway items, volunteers make this possible.</p>
+                    <p><a href="contact.html" class="custom-quote-link">Quotes for custom messaging available.</a></p>
+                </div>
+                <div class="products-mobile-buttons">
+                    <a href="shop.html">
+                        <img src="images/EventsShopButtonMobile.svg" alt="Shop protest gear">
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+
+    <!-- ── Event Lightbox ───────────────────────────────────────────────── -->
+    <div class="event-lightbox-overlay" id="eventLightbox" role="dialog" aria-modal="true">
+        <div class="event-lightbox-card" id="lightboxCard">
+            <button class="event-lightbox-close" id="lightboxClose" aria-label="Close">&#x2715;</button>
+            <h3 class="event-lightbox-title" id="lightboxTitle"></h3>
+            <div class="event-lightbox-body" id="lightboxBody"></div>
+            <div class="event-lightbox-footer">
+                <!-- Share strip -->
+                <div class="event-lightbox-share" id="lightboxShare">
+                    <!-- View Full Calendar -->
+                    <div class="lb-share-item">
+                        <a href="calendar.html" class="lb-share-btn" title="View Full Calendar" aria-label="View Full Calendar">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </a>
+                        <span class="lb-share-label">Calendar</span>
+                    </div>
+                    <!-- Copy Link -->
+                    <div class="lb-share-item">
+                        <button class="lb-share-btn" id="lbCopyLink" title="Copy event link" aria-label="Copy link">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        </button>
+                        <span class="lb-share-label" id="lbCopyLabel">Copy Link</span>
+                    </div>
+                    <!-- Facebook -->
+                    <div class="lb-share-item">
+                        <a class="lb-share-btn" id="lbFacebook" href="#" target="_blank" rel="noopener" title="Share on Facebook" aria-label="Share on Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <span class="lb-share-label">Facebook</span>
+                    </div>
+                    <!-- X / Twitter -->
+                    <div class="lb-share-item">
+                        <a class="lb-share-btn" id="lbTwitter" href="#" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <span class="lb-share-label">X</span>
+                    </div>
+                </div>
+                <!-- Date ribbon -->
+                <div class="event-lightbox-date" id="lightboxDate">
+                    <span class="event-lightbox-date-label">Next<br>Date</span>
+                    <span class="event-lightbox-date-value" id="lightboxDateValue"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── Google Calendar Config ──────────────────────────────────────────
+        const CALENDAR_ID = 'c_763fa72e771cd1ecd73b96041010c77d8152ec112b6a5eef7bc3eff9229d52d2@group.calendar.google.com';
+        const API_KEY     = 'AIzaSyDVqmPcGzgkqH4Tkccdvi7dU4Wyoz5GwC0';
+        const MAX_EVENTS  = 20; // max upcoming events to show
+
+        // ── Carousel State ──────────────────────────────────────────────────
+        const carousel     = document.getElementById('events-carousel');
+        const dotsContainer= document.getElementById('carousel-dots');
+        const leftArrow    = document.querySelector('.carousel-arrow-left');
+        const rightArrow   = document.querySelector('.carousel-arrow-right');
+        let currentIndex   = 0;
+        let totalItems     = 0;
+
+        // ── Helpers ─────────────────────────────────────────────────────────
+        function formatDate(dateStr) {
+            // dateStr is ISO date or dateTime
+            const d = new Date(dateStr);
+            return `${d.getMonth() + 1}/${d.getDate()}`;
+        }
+
+        function formatTime(start, end) {
+            if (!start.dateTime) return 'All Day';
+            const fmt = t => {
+                const d = new Date(t);
+                let h = d.getHours(), m = d.getMinutes();
+                const ampm = h >= 12 ? 'PM' : 'AM';
+                h = h % 12 || 12;
+                return `${h}${m ? ':' + String(m).padStart(2,'0') : ''} ${ampm}`;
+            };
+            return `${fmt(start.dateTime)}${end?.dateTime ? ' – ' + fmt(end.dateTime) : ''}`;
+        }
+
+        function parseDescription(desc) {
+            // Looks for lines like "subtitle: My Subtitle" or "detail: My Detail"
+            // Falls back to using the raw description text
+            if (!desc) return { subtitle: '', detail: '' };
+            const lines = desc.replace(/<[^>]+>/g, '').split('\n').map(l => l.trim()).filter(Boolean);
+            let subtitle = '', detail = '';
+            lines.forEach(line => {
+                const lower = line.toLowerCase();
+                if (lower.startsWith('subtitle:')) subtitle = line.slice(9).trim();
+                else if (lower.startsWith('detail:'))  detail  = line.slice(7).trim();
+            });
+            // If no tagged fields, use first two lines
+            if (!subtitle && lines[0]) subtitle = lines[0];
+            if (!detail   && lines[1]) detail   = lines[1];
+            return { subtitle, detail };
+        }
+
+        function buildEventBox(event, index) {
+            const colorClass = index % 2 === 0 ? 'event-box-blue' : 'event-box-red';
+            const title      = event.summary || 'Event';
+            const dateStr    = formatDate(event.start.dateTime || event.start.date);
+            const timeStr    = formatTime(event.start, event.end);
+            const location   = event.location || '';
+            const { subtitle, detail } = parseDescription(event.description);
+
+            const mapsUrl = location
+                ? `https://maps.google.com/?q=${encodeURIComponent(location)}`
+                : null;
+
+            // Split location for display: first comma separates line 1 and line 2
+            let locLine1 = location, locLine2 = '';
+            if (location.includes(',')) {
+                const parts = location.split(',');
+                locLine1 = parts[0].trim();
+                locLine2 = parts.slice(1).join(',').trim();
+            }
+
+            const box = document.createElement('div');
+            box.className = `event-box ${colorClass}`;
+            box.innerHTML = `
+                <h3 class="event-title">${title}</h3>
+                <div class="event-body">
+                    ${location ? `<p class="event-location">${
+                        mapsUrl
+                            ? `<a href="${mapsUrl}" target="_blank">Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}</a>`
+                            : `Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}`
+                    }</p>` : ''}
+                    <p class="event-time">Time: ${timeStr}</p>
+                    <button class="event-more-info">More Info</button>
+                </div>
+                <div class="event-date">
+                    <span class="event-date-label">Next<br>Date</span>
+                    <span class="event-date-value">${dateStr}</span>
+                </div>
+            `;
+
+            // Wire up More Info → lightbox
+            const moreBtn = box.querySelector('.event-more-info');
+            const lbTheme = colorClass === 'event-box-blue' ? 'lb-blue' : 'lb-red';
+            moreBtn.addEventListener('click', () => {
+                moreBtn.classList.add('visited');
+                openLightbox({ title, location, locLine1, locLine2, mapsUrl, timeStr, dateStr, lbTheme, description: event.description || '', eventUrl: event.htmlLink || '' });
+            });
+
+            return box;
+        }
+
+        // ── Dots ────────────────────────────────────────────────────────────
+        function buildDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalItems; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => scrollToIndex(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots(index) {
+            document.querySelectorAll('.dot').forEach((d, i) =>
+                d.classList.toggle('active', i === index));
+        }
+
+        function scrollToIndex(index) {
+            const box = carousel.querySelector('.event-box');
+            if (!box) return;
+            const gap = parseFloat(getComputedStyle(carousel).gap) || 32;
+            carousel.scrollTo({ left: (box.offsetWidth + gap) * index, behavior: 'smooth' });
+            currentIndex = index;
+            updateDots(currentIndex);
+        }
+
+        leftArrow.addEventListener('click', () => {
+            if (currentIndex > 0) scrollToIndex(currentIndex - 1);
+        });
+
+        rightArrow.addEventListener('click', () => {
+            if (currentIndex < totalItems - 1) scrollToIndex(currentIndex + 1);
+        });
+
+        carousel.addEventListener('scroll', () => {
+            const box = carousel.querySelector('.event-box');
+            if (!box) return;
+            const gap = parseFloat(getComputedStyle(carousel).gap) || 32;
+            const newIndex = Math.round(carousel.scrollLeft / (box.offsetWidth + gap));
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                updateDots(currentIndex);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            currentIndex = 0;
+            buildDots();
+            carousel.scrollTo({ left: 0, behavior: 'instant' });
+        });
+
+        // ── Fetch Events ────────────────────────────────────────────────────
+        async function loadEvents() {
+            const now      = new Date().toISOString();
+            const calId    = encodeURIComponent(CALENDAR_ID);
+            const url      = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events`
+                           + `?key=${API_KEY}`
+                           + `&timeMin=${now}`
+                           + `&maxResults=${MAX_EVENTS}`
+                           + `&singleEvents=true`
+                           + `&orderBy=startTime`;
+            try {
+                const res    = await fetch(url);
+                const data   = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error?.message || 'Calendar API error');
+                }
+
+                const events = data.items || [];
+                carousel.innerHTML = '';
+
+                if (events.length === 0) {
+                    carousel.innerHTML = '<div class="events-loading">No upcoming events found.</div>';
+                    return;
+                }
+
+                events.forEach((event, i) => {
+                    carousel.appendChild(buildEventBox(event, i));
+                });
+
+                totalItems = events.length;
+                buildDots();
+
+            } catch (err) {
+                console.error('Calendar fetch error:', err);
+                carousel.innerHTML = `<div class="events-error">Could not load events. Please check back soon.</div>`;
+            }
+        }
+
+        // ── Lightbox ─────────────────────────────────────────────────────
+        const lightboxOverlay = document.getElementById('eventLightbox');
+        const lightboxCard    = document.getElementById('lightboxCard');
+        const lightboxClose   = document.getElementById('lightboxClose');
+        const lightboxTitle   = document.getElementById('lightboxTitle');
+        const lightboxBody    = document.getElementById('lightboxBody');
+        const lightboxDateVal = document.getElementById('lightboxDateValue');
+        const lbFacebook      = document.getElementById('lbFacebook');
+        const lbTwitter       = document.getElementById('lbTwitter');
+        const lbCopyLink      = document.getElementById('lbCopyLink');
+        const lbCopyLabel     = document.getElementById('lbCopyLabel');
+
+        function openLightbox({ title, location, locLine1, locLine2, mapsUrl, timeStr, dateStr, lbTheme, description, eventUrl }) {
+            lightboxCard.className = `event-lightbox-card ${lbTheme}`;
+            lightboxTitle.textContent = title;
+            lightboxDateVal.textContent = dateStr;
+
+            let bodyHTML = '';
+            if (location) {
+                bodyHTML += `<p>${mapsUrl
+                    ? `<a href="${mapsUrl}" target="_blank">Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}</a>`
+                    : `Location: ${locLine1}${locLine2 ? '<br>' + locLine2 : ''}`}</p>`;
+            }
+            bodyHTML += `<p>Time: ${timeStr}</p>`;
+            if (description) {
+                let safeDesc = description
+                    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+                    .replace(/<(?!\/?(?:a|br|b|strong|em|i)\b)[^>]+>/gi, '');
+                safeDesc = safeDesc.replace(/<a\s/gi, '<a target="_blank" rel="noopener" ');
+                bodyHTML += `<p class="lb-description">${safeDesc}</p>`;
+            }
+            lightboxBody.innerHTML = bodyHTML;
+
+            // Wire share buttons — always link to calendar page, but include event details in post text
+            const calendarUrl = 'https://www.rallytheallies.com/calendar.html';
+            const shareLink   = encodeURIComponent(calendarUrl);
+
+            // Build event-specific share text
+            const locationText = location ? ` 📍 ${locLine1}${locLine2 ? ', ' + locLine2 : ''}` : '';
+            const eventBlurb   = `${title} — ${timeStr}${locationText}`;
+            const fullText     = `RallyTheAllies.com — Get Involved In The Resistance ★\n${eventBlurb}\nBrowse our full calendar of activist events:`;
+            const encodedText  = encodeURIComponent(fullText);
+            const encodedQuote = encodeURIComponent(eventBlurb);
+
+            // Facebook: u= is the link preview, quote= pre-fills the post text with event info
+            lbFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${shareLink}&quote=${encodedQuote}`;
+            // X/Twitter: text includes event details, url appended separately
+            lbTwitter.href  = `https://twitter.com/intent/tweet?text=${encodedText}&url=${shareLink}`;
+
+            lbCopyLabel.textContent = 'Copy Link';
+            lbCopyLink.onclick = () => {
+                navigator.clipboard.writeText(calendarUrl).then(() => {
+                    lbCopyLabel.textContent = 'Copied!';
+                    setTimeout(() => { lbCopyLabel.textContent = 'Copy Link'; }, 2000);
+                }).catch(() => {
+                    lbCopyLabel.textContent = 'Copy Link';
+                });
+            };
+
+            lightboxOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightboxOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', (e) => {
+            if (e.target === lightboxOverlay) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        loadEvents();
+    </script>
+
+    <!-- ── Content Section ───────────────────────────────────────────────── -->
+    <section class="content-section-new" id="content">
+
+        <div class="content-banner-wrapper">
+            <!-- Desktop -->
+            <svg class="content-banner content-banner-wide" viewBox="0 0 1400 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="contentMaskWide">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="700" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">CONTENT</text>
+                        <text x="200"  y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="290"  y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="380"  y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="470"  y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="930"  y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1020" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1110" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="1200" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#e1502f" mask="url(#contentMaskWide)"/>
+            </svg>
+            <!-- Tablet -->
+            <svg class="content-banner content-banner-tablet" viewBox="0 0 1100 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="contentMaskTablet">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="550" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">CONTENT</text>
+                        <text x="150" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="220" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="290" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="360" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="740" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="810" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="880" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="950" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#e1502f" mask="url(#contentMaskTablet)"/>
+            </svg>
+            <!-- Mobile -->
+            <svg class="content-banner content-banner-mobile" viewBox="0 0 800 60" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <mask id="contentMaskMobile">
+                        <rect width="100%" height="100%" fill="white"/>
+                        <text x="400" y="45" text-anchor="middle" font-size="45" font-weight="bold" font-family="'Montserrat Alternates', sans-serif" fill="black">CONTENT</text>
+                        <text x="90"  y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="140" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="190" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="240" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="560" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="610" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="660" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                        <text x="710" y="42" text-anchor="middle" font-size="30" fill="black">★</text>
+                    </mask>
+                </defs>
+                <rect width="100%" height="100%" fill="#e1502f" mask="url(#contentMaskMobile)"/>
+            </svg>
+        </div>
+
+        <!-- Content In Spaces Hero Images -->
+        <div class="content-spaces-hero">
+            <img src="images/ContentInSpacesHero.svg" alt="Content In Spaces" class="content-spaces-hero-img content-spaces-hero-desktop">
+            <img src="images/ContentInSpacesHeroMobile.svg" alt="Content In Spaces" class="content-spaces-hero-img content-spaces-hero-mobile">
+        </div>
+
+    </section>
+    
+</body>
+</html>

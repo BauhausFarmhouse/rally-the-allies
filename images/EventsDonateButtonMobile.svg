@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="688.47681mm"
+   height="134.57809mm"
+   viewBox="0 0 688.47681 134.57809"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="EventsProtestSign.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="1.3906094e-18"
+       y="1.0806563e-18"
+       width="688.47681"
+       height="134.57809"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-1785.6346,4581.7425)">
+    <rect
+       style="display:inline;fill:#e66e52;fill-opacity:1;stroke-width:0.206533"
+       id="rect35"
+       width="688.47681"
+       height="134.57811"
+       x="1785.6346"
+       y="-4581.7427"
+       ry="0.40699026"
+       inkscape:export-filename="../EventsDonateButtonMobile.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:80.2451px;font-family:'Montserrat Alternates';-inkscape-font-specification:'Montserrat Alternates Bold';writing-mode:lr-tb;direction:ltr;display:inline;fill:#ffffff;fill-opacity:1;stroke-width:35.0047"
+       x="1797.7065"
+       y="-4511.7656"
+       id="text37"><tspan
+         sodipodi:role="line"
+         id="tspan37"
+         style="fill:#ffffff;stroke-width:35.0047"
+         x="1797.7065"
+         y="-4511.7656">DONATE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:58.5734px;font-family:'Montserrat Alternates';-inkscape-font-specification:'Montserrat Alternates Bold';writing-mode:lr-tb;direction:ltr;display:inline;opacity:0.5;fill:#ffffff;fill-opacity:1;stroke-width:25.5511"
+       x="1999.7574"
+       y="-4469.1597"
+       id="text38"><tspan
+         sodipodi:role="line"
+         id="tspan38"
+         style="fill:#ffffff;stroke-width:25.5511"
+         x="1999.7574"
+         y="-4469.1597">gear giveaway</tspan></text>
+  </g>
+</svg>
